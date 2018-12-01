@@ -22,11 +22,11 @@ h1 {
 }
 
 h2 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
 }
 
 h3 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
 }
 
 p {
@@ -41,7 +41,7 @@ p {
 
 .search-field {
   width: 30%;
-  padding: 7px 10px;
+  padding: 10px 10px;
   border-radius: 15px;
   border: none;
   text-align: center;
@@ -52,10 +52,12 @@ p {
   background: #00b4b3;
   border: none;
   border-radius: 15px;
-  padding: 7px 10px;
+  padding: 10px 10px;
   margin-left: 5px;
-  width: 12%;
-  font-size: 1.3rem;
+  width: 15%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .save-stub {
