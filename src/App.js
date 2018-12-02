@@ -20,11 +20,6 @@ const dbRef = firebase.database().ref();
 
 
 
-
-
-
-
-
 class App extends Component {
   constructor() {
     super();
@@ -35,6 +30,9 @@ class App extends Component {
       artistNameShown: '',
       artistPhoto: '',
       myConcerts: {},
+      date: '',
+      venue: '',
+      city: '',
     };
   }
 
@@ -49,8 +47,6 @@ componentDidMount() {
       });
     });
   }
-
-
 
 
 handleChange = e => {
@@ -129,7 +125,10 @@ getConcerts = () => {
         }
       }).then((res) => {
         this.setState({
-          allConcerts: res.data //setting the state for all events
+          allConcerts: res.data, //setting the state for all events
+          // date: res.data.datetime,
+          // venue: res.data.venue.name,
+          // city: res.data.venue.city
         });
         console.log(res.data, 'events');
       })     
@@ -152,6 +151,7 @@ handleSubmit = (e) => {
 render() {   
     return (
       <div className="App">
+      <div className="wrapper">      
         <h1>Doors at 8.</h1>
         <h2>Keep track of concerts you've been to by your favourite artists</h2>
         <h3>Find your favourite artist or band</h3>
@@ -164,8 +164,7 @@ render() {
               type="text" 
               className="search-field"
               placeholder="Enter artist or band name"
-              />
-              
+              />             
             <input 
               type="submit"
               value="FIND CONCERTS!"
@@ -182,10 +181,13 @@ render() {
             <ConcertList allConcerts={this.state.allConcerts} handleSave={this.handleSave}/>
           </div>                     
         </section>
+      </div>
 
-        {/* <section>
-          <SavedConcertList savedConcerts={this.state.savedConcerts}/>
-        </section> */}
+        <footer>
+          <p>Created by Sam Sakhavarz</p>
+          <p>Concert info provided by <a href="https://www.bandsintown.com/">Bandsintown</a></p>
+
+        </footer>
       </div>
     );
   }
