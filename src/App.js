@@ -6,6 +6,7 @@ import Qs from 'qs';
 import ConcertList from './ConcertList';
 import savedConcertList from './SavedConcertList';
 import ArtistHero from './ArtistHero';
+import Footer from './Footer';
 
 //PSEUDOCODE
 //get user's input from the search box and return search result, making a call to the bandsintown API
@@ -151,43 +152,38 @@ handleSubmit = (e) => {
 render() {   
     return (
       <div className="App">
-      <div className="wrapper">      
-        <h1>Doors at 8.</h1>
-        <h2>Keep track of concerts you've been to by your favourite artists</h2>
-        <h3>Find your favourite artist or band</h3>
-          <form onSubmit={this.handleSubmit} action="">
-            <label className="label-text"htmlFor="searchInput"></label>
-            <input
-              onChange={this.handleChange}
-              value={this.state.searchInput}
-              id="searchInput"
-              type="text" 
-              className="search-field"
-              placeholder="Enter artist or band name"
-              />             
-            <input 
-              type="submit"
-              value="FIND CONCERTS!"
-              className="button"
-            />
-          </form> 
-
-        <section>
-          <div>
-            <ArtistHero 
-              artistNameShown={this.state.artistNameShown} 
-              artistPhoto={this.state.artistPhoto} 
+        <div className="wrapper">      
+          <h1>Doors at 8.</h1>
+          <h2>Keep track of concerts you've been to by your favourite artists</h2>
+          <h3>Find your favourite artist or band</h3>
+            <form onSubmit={this.handleSubmit} action="">
+              <label className="label-text"htmlFor="searchInput"></label>
+              <input
+                onChange={this.handleChange}
+                value={this.state.searchInput}
+                id="searchInput"
+                type="text" 
+                className="search-field"
+                placeholder="Enter artist or band name"
+                />             
+              <input 
+                type="submit"
+                value="FIND CONCERTS!"
+                className="button"
               />
-            <ConcertList allConcerts={this.state.allConcerts} handleSave={this.handleSave}/>
-          </div>                     
-        </section>
-      </div>
+            </form> 
 
-        <footer>
-          <p>Created by Sam Sakhavarz</p>
-          <p>Concert info provided by <a href="https://www.bandsintown.com/">Bandsintown</a></p>
-
-        </footer>
+          <section>
+            <div>
+              <ArtistHero 
+                artistNameShown={this.state.artistNameShown} 
+                artistPhoto={this.state.artistPhoto} 
+                /> 
+              <ConcertList allConcerts={this.state.allConcerts} handleSave={this.handleSave}/>
+            </div>                     
+          </section>
+        </div>       
+        <Footer />        
       </div>
     );
   }
