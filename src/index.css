@@ -115,6 +115,8 @@ p {
 .button:hover,
 .button:focus {
   color: #FAFAFA;
+  font-size: 1.7rem;
+
 }
 
 @media(max-width: 699px) {
@@ -178,11 +180,6 @@ p {
 }
 
 
-
-
-
-
-
 /* SEARCH RESULTS SECTION ----- */
 .save-stub {
   width: 30%;
@@ -203,15 +200,12 @@ p {
 }
 
 
-
-
-
 /* FOOTER SECTION ----------- */
 
 footer {
   margin-top: 20%;
   background: #282a2d;
-  padding: 20px 0;
+  padding: 25px 0;
 }
 
 footer p {

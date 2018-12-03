@@ -8,11 +8,6 @@ import savedConcertList from './SavedConcertList';
 import ArtistHero from './ArtistHero';
 import Footer from './Footer';
 
-//PSEUDOCODE
-//get user's input from the search box and return search result, making a call to the bandsintown API
-//let user select an event and save it to their personal collection
-
-
 
 //importing fully configured firebase object from module created:
 import firebase from './firebase';
@@ -36,7 +31,6 @@ class App extends Component {
       city: '',
     };
   }
-
 
 componentDidMount() {
     console.log('mounted');
@@ -62,10 +56,13 @@ handleChange = e => {
 handleSave = (e, id) => {
   e.preventDefault();
   console.log('handle save being called', e, id);
-
+  
   //using id thats passed to handleSave, we are going to filter through this.state.allConcerts and grab the corresponding object in this array
-  //once we identify the objetc, we are going to pull this info: artist name, venue and city
+  // const savedConcert = this.state.allConcerts.filter(id)
+
+  //once we identify the object, we are going to pull this info: artist name, venue and city
   //update state once we have this information
+ 
 
   const savedConcert = {
     artist: this.state.artistNameShown,
@@ -78,15 +75,14 @@ handleSave = (e, id) => {
   dbRef.push(savedConcert);
 
   // this.setState({
-  //   artist: '',
-  //   date: '',
-  //   venue: '',
-  //   city: ''
+  //   date: res.data.datetime,
+  //   venue: res.data.venue.name,
+  //   city: res.data.venue.city
   // });
 };
 
 
-//function to get concerts (2 x calls: one to get artist info, and one to get list of all their events):
+//get concerts from user's search input(2 x calls: one to get artist info, and one to get list of all their events):
 getConcerts = () => {    
     axios({
       url: 'http://proxy.hackeryou.com',
@@ -179,7 +175,7 @@ render() {
                 artistNameShown={this.state.artistNameShown} 
                 artistPhoto={this.state.artistPhoto} 
                 /> 
-              <ConcertList allConcerts={this.state.allConcerts} handleSave={this.handleSave}/>
+              <ConcertList allConcerts={this.state.allConcerts} handleSave={this.handleSave} />
             </div>                     
           </section>
         </div>       
