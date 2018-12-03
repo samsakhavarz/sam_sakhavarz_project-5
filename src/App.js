@@ -35,7 +35,7 @@ class App extends Component {
 componentDidMount() {
     console.log('mounted');
 
-  //attach event listener to firebase
+//attach event listener to firebase
     dbRef.on('value', (snapshot) => {
       this.setState({
         myConcerts: snapshot.val()
@@ -52,7 +52,7 @@ handleChange = e => {
 
 
 
-//handling the submit from the 'save my stub' submit input:  
+//handling the save-submit from the 'save my stub' button input:  
 handleSave = (e, id) => {
   e.preventDefault();
   console.log('handle save being called', e, id);
@@ -64,7 +64,7 @@ handleSave = (e, id) => {
   //update state once we have this information
  
 
-  const savedConcert = {
+const savedConcert = {
     artist: this.state.artistNameShown,
     // date: this.state.datetime,
     // venue: this.state.venue.name,
