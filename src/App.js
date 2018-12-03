@@ -75,7 +75,7 @@ handleChange = e => {
 //get concerts from user's search; 2 x calls: one to get artist info (name and photo), and one to get list of all their events:
 getConcerts = () => {    
     axios({
-      url: 'http://proxy.hackeryou.com',
+      url: 'https://proxy.hackeryou.com',
       dataResponse: 'json',
       paramsSerializer: function (params) {
         return Qs.stringify(params, { arrayFormat: 'brackets' })
@@ -97,7 +97,7 @@ getConcerts = () => {
       });
 
       axios({
-        url: 'http://proxy.hackeryou.com',
+        url: 'https://proxy.hackeryou.com',
         dataResponse: 'json',
         paramsSerializer: function (params) {
           return Qs.stringify(params, { arrayFormat: 'brackets' })
