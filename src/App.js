@@ -53,36 +53,26 @@ handleChange = e => {
 
 
 //handling the save-submit from the 'save my stub' button input:  
-handleSave = (e, id) => {
+  handleSave = (e, id, venuename, cityname) => {
   e.preventDefault();
-  console.log('handle save being called', e, id);
+
   
-  //using id thats passed to handleSave, we are going to filter through this.state.allConcerts and grab the corresponding object in this array
-  // const savedConcert = this.state.allConcerts.filter(id)
 
-  //once we identify the object, we are going to pull this info: artist name, venue and city
-  //update state once we have this information
- 
-
-const savedConcert = {
+//created object to store saved stub to firebase
+  const savedStub = {
     artist: this.state.artistNameShown,
-    // date: this.state.datetime,
-    // venue: this.state.venue.name,
-    // city: this.state.venue.city
+    venue: venuename,
+    concertId: id,
+    city: cityname
   };
-  console.log ('saved concert', savedConcert);
+  console.log ('saved concert', savedStub);
 
-  dbRef.push(savedConcert);
+  dbRef.push(savedStub);
 
-  // this.setState({
-  //   date: res.data.datetime,
-  //   venue: res.data.venue.name,
-  //   city: res.data.venue.city
-  // });
 };
 
 
-//get concerts from user's search input(2 x calls: one to get artist info, and one to get list of all their events):
+//get concerts from user's search; 2 x calls: one to get artist info (name and photo), and one to get list of all their events:
 getConcerts = () => {    
     axios({
       url: 'http://proxy.hackeryou.com',
@@ -123,11 +113,8 @@ getConcerts = () => {
       }).then((res) => {
         this.setState({
           allConcerts: res.data, //setting the state for all events
-          // date: res.data.datetime,
-          // venue: res.data.venue.name,
-          // city: res.data.venue.city
         });
-        console.log(res.data, 'events');
+        // console.log(res.data, 'events');
       })     
     });
   }

@@ -7,7 +7,7 @@ const ConcertList = props => {
     return (       
         <div>
             {props.allConcerts.map((concerts) => {
-                console.log(concerts.id);
+                // console.log(concerts.id);
                 return (
                     <div className="event-card">  
                         <div className="event-card-wrapper">               
@@ -15,7 +15,7 @@ const ConcertList = props => {
                             <p>Venue: {concerts.venue.name}</p>
                             <p>City: {concerts.venue.city}</p>
                             
-                            <form onSubmit={(e)=>props.handleSave(e, concerts.id)} action="">
+                            <form onSubmit={(e) => props.handleSave(e, concerts.id, concerts.venue.name, concerts.venue.city)} action="">
                                 <input className="button save-button" type="submit" value="SAVE MY STUB!"/>
                             </form>
                         </div> 
